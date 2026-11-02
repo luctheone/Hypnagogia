@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: macos-15
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v5
+
+      - name: Run checks
+        run: ./Scripts/check.sh
+
+      - name: Build app archive
+        run: ./Scripts/build-app.sh
+
+      - name: Inspect archive
+        run: unzip -l dist/DozeLatch.zip
