@@ -3,24 +3,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "DozeLatch",
+    name: "Hypnagogia",
     platforms: [
         .macOS(.v13)
     ],
     products: [
-        .executable(name: "DozeLatch", targets: ["DozeLatch"])
+        .executable(name: "Hypnagogia", targets: ["Hypnagogia"])
     ],
     targets: [
         .target(
-            name: "DozeLatchCore"
+            name: "HypnagogiaCore"
         ),
         .executableTarget(
-            name: "DozeLatch",
-            dependencies: ["DozeLatchCore"]
+            name: "Hypnagogia",
+            dependencies: ["HypnagogiaCore"]
         ),
         .executableTarget(
-            name: "DozeLatchChecks",
-            dependencies: ["DozeLatchCore"]
+            name: "HypnagogiaChecks",
+            dependencies: ["HypnagogiaCore"]
         )
     ]
 )

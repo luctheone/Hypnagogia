@@ -1,7 +1,7 @@
 import AppKit
 import SwiftUI
 
-struct DozeLatchView: View {
+struct HypnagogiaView: View {
     @ObservedObject var controller: AwakeController
 
     private var temporaryBinding: Binding<Bool> {
@@ -65,7 +65,7 @@ struct DozeLatchView: View {
             .frame(width: 44, height: 44)
 
             VStack(alignment: .leading, spacing: 3) {
-                Text("DozeLatch")
+                Text("Hypnagogia")
                     .font(.headline)
                 Text(state.title)
                     .font(.subheadline.weight(.medium))
@@ -78,7 +78,7 @@ struct DozeLatchView: View {
             Spacer(minLength: 0)
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("DozeLatch. \(state.title). \(state.detail)")
+        .accessibilityLabel("Hypnagogia. \(state.title). \(state.detail)")
     }
 
     private var temporaryCard: some View {
@@ -86,13 +86,13 @@ struct DozeLatchView: View {
             icon: "cup.and.saucer.fill",
             tint: .orange,
             title: "Prevent idle sleep",
-            detail: "Runs caffeinate until switched off or DozeLatch quits."
+            detail: "Runs caffeinate until switched off or Hypnagogia quits."
         ) {
             Toggle("Temporary keep-awake", isOn: temporaryBinding)
                 .labelsHidden()
                 .toggleStyle(.switch)
                 .accessibilityLabel("Temporary keep-awake")
-                .accessibilityHint("Runs caffeinate until switched off or DozeLatch quits.")
+                .accessibilityHint("Runs caffeinate until switched off or Hypnagogia quits.")
         } content: {
             Divider()
 
@@ -127,12 +127,12 @@ struct DozeLatchView: View {
                     .toggleStyle(.switch)
                     .disabled(!controller.persistentStateIsKnown)
                     .accessibilityLabel("Disable all system sleep persistently")
-                    .accessibilityHint("Requires administrator approval and remains active after DozeLatch quits.")
+                    .accessibilityHint("Requires administrator approval and remains active after Hypnagogia quits.")
             }
         } content: {
             HStack(spacing: 6) {
                 Image(systemName: "person.badge.key.fill")
-                Text("Uses a fixed pmset command. DozeLatch never stores your password.")
+                Text("Uses a fixed pmset command. Hypnagogia never stores your password.")
             }
             .font(.caption)
             .foregroundStyle(.secondary)
@@ -171,15 +171,15 @@ struct DozeLatchView: View {
 
             Spacer()
 
-            Button("Quit DozeLatch") {
+            Button("Quit Hypnagogia") {
                 controller.shutdown()
                 NSApp.terminate(nil)
             }
             .buttonStyle(.plain)
             .foregroundStyle(.secondary)
             .help(controller.persistentIsEnabled
-                  ? "Quits DozeLatch. The persistent pmset setting stays on."
-                  : "Quits DozeLatch and ends its temporary keep-awake session.")
+                  ? "Quits Hypnagogia. The persistent pmset setting stays on."
+                  : "Quits Hypnagogia and ends its temporary keep-awake session.")
         }
         .font(.caption)
     }

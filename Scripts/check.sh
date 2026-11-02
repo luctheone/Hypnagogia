@@ -7,4 +7,4 @@ PROJECT_DIR="${SCRIPT_DIR:h}"
 
 exec "$SCRIPT_DIR/swift-package.sh" run \
     --package-path "$PROJECT_DIR" \
-    DozeLatchChecks
+    HypnagogiaChecks

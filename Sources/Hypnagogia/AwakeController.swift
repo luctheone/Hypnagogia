@@ -144,7 +144,7 @@ final class AwakeController: ObservableObject {
         if keepDisplayAwake {
             arguments.append("-d")
         }
-        // `-w` ensures the assertion cannot outlive DozeLatch after a crash or force-quit.
+        // `-w` ensures the assertion cannot outlive Hypnagogia after a crash or force-quit.
         arguments.append(contentsOf: ["-w", String(ProcessInfo.processInfo.processIdentifier)])
         process.arguments = arguments
         process.standardOutput = FileHandle.nullDevice
@@ -208,7 +208,7 @@ final class AwakeController: ObservableObject {
                 }
             case .failure(let error):
                 self.persistentStateIsKnown = false
-                self.message = .error("The command ran, but DozeLatch could not verify it: \(error.localizedDescription)")
+                self.message = .error("The command ran, but Hypnagogia could not verify it: \(error.localizedDescription)")
             }
         }
     }
@@ -236,9 +236,9 @@ enum CombinedAwakeState {
     var detail: String {
         switch self {
         case .normal: return "Your usual macOS sleep settings apply."
-        case .temporary: return "Ends when you switch it off or quit DozeLatch."
-        case .temporaryUnknown: return "Caffeinate is on, but DozeLatch could not read the pmset override."
-        case .persistent: return "The pmset override remains on after DozeLatch quits."
+        case .temporary: return "Ends when you switch it off or quit Hypnagogia."
+        case .temporaryUnknown: return "Caffeinate is on, but Hypnagogia could not read the pmset override."
+        case .persistent: return "The pmset override remains on after Hypnagogia quits."
         case .both: return "Temporary caffeinate and persistent pmset are both on."
         case .unknown: return "Open this menu to try reading the setting again."
         }

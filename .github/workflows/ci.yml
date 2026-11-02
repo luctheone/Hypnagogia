@@ -23,4 +23,4 @@ jobs:
         run: ./Scripts/build-app.sh
 
       - name: Inspect archive
-        run: unzip -l dist/DozeLatch.zip
+        run: unzip -l dist/Hypnagogia.zip

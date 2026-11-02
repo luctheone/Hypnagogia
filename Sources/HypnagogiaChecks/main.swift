@@ -1,5 +1,5 @@
 import Darwin
-import DozeLatchCore
+import HypnagogiaCore
 
 private struct CheckSuite {
     private(set) var failures: [String] = []
@@ -69,7 +69,7 @@ suite.expect(
 )
 
 if suite.failures.isEmpty {
-    print("DozeLatch checks passed (\(suite.checksRun)/\(suite.checksRun)).")
+    print("Hypnagogia checks passed (\(suite.checksRun)/\(suite.checksRun)).")
 } else {
     for failure in suite.failures {
         fputs("FAIL: \(failure)\n", stderr)

@@ -1,7 +1,7 @@
 import AppKit
 import SwiftUI
 
-final class DozeLatchAppDelegate: NSObject, NSApplicationDelegate {
+final class HypnagogiaAppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
         AwakeController.shared.refreshPersistentState()
@@ -13,16 +13,16 @@ final class DozeLatchAppDelegate: NSObject, NSApplicationDelegate {
 }
 
 @main
-struct DozeLatchApp: App {
-    @NSApplicationDelegateAdaptor(DozeLatchAppDelegate.self) private var appDelegate
+struct HypnagogiaApp: App {
+    @NSApplicationDelegateAdaptor(HypnagogiaAppDelegate.self) private var appDelegate
     @StateObject private var controller = AwakeController.shared
 
     var body: some Scene {
         MenuBarExtra {
-            DozeLatchView(controller: controller)
+            HypnagogiaView(controller: controller)
         } label: {
             Image(systemName: controller.menuBarSymbol)
-                .accessibilityLabel("DozeLatch")
+                .accessibilityLabel("Hypnagogia")
                 .accessibilityValue(controller.combinedState.title)
         }
         .menuBarExtraStyle(.window)

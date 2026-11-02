@@ -6,12 +6,12 @@ SCRIPT_DIR="${0:A:h}"
 PROJECT_DIR="${SCRIPT_DIR:h}"
 DEFAULT_SDK="$(/usr/bin/xcrun --sdk macosx --show-sdk-path)"
 COMPATIBLE_CLT_SDK="/Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk"
-SDK_PATH="${DOZELATCH_SDK_PATH:-$DEFAULT_SDK}"
+SDK_PATH="${HYPNAGOGIA_SDK_PATH:-$DEFAULT_SDK}"
 
 # Some Command Line Tools installations expose a newer SDK that their bundled
 # compiler cannot import. When Apple also installed the compatible macOS 15.4
-# SDK, use it; an explicit DOZELATCH_SDK_PATH always wins.
-if [[ -z "${DOZELATCH_SDK_PATH:-}" && "$DEFAULT_SDK" == "/Library/Developer/CommandLineTools/SDKs/"* && -d "$COMPATIBLE_CLT_SDK" ]]; then
+# SDK, use it; an explicit HYPNAGOGIA_SDK_PATH always wins.
+if [[ -z "${HYPNAGOGIA_SDK_PATH:-}" && "$DEFAULT_SDK" == "/Library/Developer/CommandLineTools/SDKs/"* && -d "$COMPATIBLE_CLT_SDK" ]]; then
     SDK_PATH="$COMPATIBLE_CLT_SDK"
 fi
 

@@ -1,5 +1,5 @@
 import Foundation
-import DozeLatchCore
+import HypnagogiaCore
 
 struct CommandFailure: LocalizedError {
     let command: String
@@ -66,7 +66,7 @@ enum PowerSettingsClient {
                     output: execution.output
                 )
             } catch {
-                result = .failed("DozeLatch could not open the administrator request: \(error.localizedDescription)")
+                result = .failed("Hypnagogia could not open the administrator request: \(error.localizedDescription)")
             }
 
             DispatchQueue.main.async {
